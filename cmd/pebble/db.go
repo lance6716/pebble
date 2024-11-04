@@ -7,11 +7,11 @@ package main
 import (
 	"log"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/bloom"
-	"github.com/cockroachdb/pebble/internal/bytealloc"
-	"github.com/cockroachdb/pebble/objstorage/remote"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/bloom"
+	"github.com/lance6716/pebble/internal/bytealloc"
+	"github.com/lance6716/pebble/objstorage/remote"
+	"github.com/lance6716/pebble/vfs"
 )
 
 // DB specifies the minimal interfaces that need to be implemented to support

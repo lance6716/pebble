@@ -10,9 +10,9 @@ package objiotracing
 import (
 	"context"
 
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/objstorage"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/objstorage"
+	"github.com/lance6716/pebble/vfs"
 )
 
 // Enabled is used to short circuit tracing-related code in regular builds.

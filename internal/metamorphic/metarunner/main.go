@@ -14,8 +14,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/cockroachdb/pebble/internal/metamorphic/metaflags"
-	"github.com/cockroachdb/pebble/metamorphic"
+	"github.com/lance6716/pebble/internal/metamorphic/metaflags"
+	"github.com/lance6716/pebble/metamorphic"
 )
 
 var runOnceFlags = metaflags.InitRunOnceFlags()

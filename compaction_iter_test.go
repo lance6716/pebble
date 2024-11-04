@@ -15,11 +15,11 @@ import (
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/invalidating"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/invalidating"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/internal/testkeys"
 	"github.com/stretchr/testify/require"
 )
 

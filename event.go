@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/humanize"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/vfs"
 	"github.com/cockroachdb/redact"
+	"github.com/lance6716/pebble/internal/humanize"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/vfs"
 )
 
 // TableInfo exports the manifest.TableInfo type.

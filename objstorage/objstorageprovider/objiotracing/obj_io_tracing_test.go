@@ -10,10 +10,10 @@ import (
 	"testing"
 	"unsafe"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/objstorage/objstorageprovider/objiotracing"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/objstorage/objstorageprovider/objiotracing"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/stretchr/testify/require"
 )
 

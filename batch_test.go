@@ -21,11 +21,11 @@ import (
 
 	"github.com/cockroachdb/datadriven"
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/batchskl"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/testkeys"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/batchskl"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/stretchr/testify/require"
 )
 

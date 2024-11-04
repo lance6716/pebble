@@ -6,9 +6,9 @@
 package rangekey
 
 import (
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/sstable"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/sstable"
 )
 
 // Fragmenter exports the keyspan.Fragmenter type.

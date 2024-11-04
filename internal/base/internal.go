@@ -2,7 +2,7 @@
 // of this source code is governed by a BSD-style license that can be found in
 // the LICENSE file.
 
-package base // import "github.com/cockroachdb/pebble/internal/base"
+package base // import "github.com/lance6716/pebble/internal/base"
 
 import (
 	"encoding/binary"
@@ -67,7 +67,7 @@ const (
 	// InternalKeyKindSetWithDelete keys are SET keys that have met with a
 	// DELETE or SINGLEDEL key in a prior compaction. This key kind is
 	// specific to Pebble. See
-	// https://github.com/cockroachdb/pebble/issues/1255.
+	// https://github.com/lance6716/pebble/issues/1255.
 	InternalKeyKindSetWithDelete InternalKeyKind = 18
 
 	// InternalKeyKindRangeKeyDelete removes all range keys within a key range.

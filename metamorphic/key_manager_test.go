@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/cockroachdb/pebble/internal/randvar"
+	"github.com/lance6716/pebble/internal/randvar"
 	"github.com/stretchr/testify/require"
 )
 

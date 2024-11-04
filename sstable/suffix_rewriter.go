@@ -8,11 +8,11 @@ import (
 
 	"github.com/cespare/xxhash/v2"
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/bytealloc"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/objstorage"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/bytealloc"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/objstorage"
 )
 
 // RewriteKeySuffixes is deprecated.

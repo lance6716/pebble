@@ -65,15 +65,15 @@
 //		return err
 //	}
 //	return w.Close()
-package sstable // import "github.com/cockroachdb/pebble/sstable"
+package sstable // import "github.com/lance6716/pebble/sstable"
 
 import (
 	"context"
 	"encoding/binary"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/objstorage"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/objstorage"
 )
 
 /*
@@ -228,7 +228,8 @@ const (
 	// doesn't use zstd compression, the string will always be the same.
 	// This should be removed if we ever decide to diverge from the RocksDB
 	// properties block.
-	rocksDBCompressionOptions = "window_bits=-14; level=32767; strategy=0; max_dict_bytes=0; zstd_max_train_bytes=0; enabled=0; "
+	// TODO(lance6716): If we should also align compression behaviour?
+	rocksDBCompressionOptions = "window_bits=-14; level=32767; strategy=0; max_dict_bytes=0; zstd_max_train_bytes=0; enabled=0; max_dict_buffer_bytes=0; use_zstd_dict_trainer=1; "
 )
 
 // ChecksumType specifies the checksum used for blocks.

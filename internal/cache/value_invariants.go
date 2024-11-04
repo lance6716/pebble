@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/manual"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/manual"
 )
 
 // newValue creates a Value with a manually managed buffer of size n.

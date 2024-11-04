@@ -2,9 +2,9 @@
 - Status: in-progress
 - Start Date: 2022-10-27
 - Authors: Arjun Nair
-- RFC PR: https://github.com/cockroachdb/pebble/pull/2116
+- RFC PR: https://github.com/lance6716/pebble/pull/2116
 - Pebble Issues:
-  https://github.com/cockroachdb/pebble/issues/1683
+  https://github.com/lance6716/pebble/issues/1683
 
 
 ** Design Draft**

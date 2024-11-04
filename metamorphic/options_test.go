@@ -13,11 +13,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/internal/testkeys"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
 	"github.com/kr/pretty"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/exp/rand"
 )

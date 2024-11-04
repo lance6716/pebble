@@ -11,9 +11,9 @@ package main
 import (
 	"log"
 
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/record"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/record"
+	"github.com/lance6716/pebble/vfs"
 )
 
 func writeVE(writer *record.Writer, ve *manifest.VersionEdit) {

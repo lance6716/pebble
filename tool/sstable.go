@@ -13,14 +13,14 @@ import (
 	"sort"
 	"text/tabwriter"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/humanize"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/private"
-	"github.com/cockroachdb/pebble/internal/rangedel"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/humanize"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/private"
+	"github.com/lance6716/pebble/internal/rangedel"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/spf13/cobra"
 )
 

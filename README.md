@@ -1,4 +1,4 @@
-# Pebble [![Build Status](https://github.com/cockroachdb/pebble/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/cockroachdb/pebble/actions/workflows/ci.yaml) [![GoDoc](https://godoc.org/github.com/cockroachdb/pebble?status.svg)](https://godoc.org/github.com/cockroachdb/pebble) <sup><sub><sub>[Coverage](https://storage.googleapis.com/crl-codecover-public/pebble/index.html)</sub></sub></sup>
+# Pebble [![Build Status](https://github.com/lance6716/pebble/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/lance6716/pebble/actions/workflows/ci.yaml) [![GoDoc](https://godoc.org/github.com/lance6716/pebble?status.svg)](https://godoc.org/github.com/lance6716/pebble) <sup><sub><sub>[Coverage](https://storage.googleapis.com/crl-codecover-public/pebble/index.html)</sub></sub></sup>
 
 #### [Nightly benchmarks](https://cockroachdb.github.io/pebble/)
 
@@ -113,7 +113,7 @@ known incompatibilities.
 * SSTable format version 3 and 4. Pebble does not support version 3
   and version 4 format sstables. The sstable format version is
   controlled by the `BlockBasedTableOptions::format_version` option.
-  See [#97](https://github.com/cockroachdb/pebble/issues/97).
+  See [#97](https://github.com/lance6716/pebble/issues/97).
 
 ## Format major versions
 
@@ -124,11 +124,11 @@ versions'. By default, when Pebble opens a database, it defaults to
 6.2.1 (with the caveats described above).
 
 To opt into new formats, a user may set `FormatMajorVersion` on the
-[`Options`](https://pkg.go.dev/github.com/cockroachdb/pebble#Options)
+[`Options`](https://pkg.go.dev/github.com/lance6716/pebble#Options)
 supplied to
-[`Open`](https://pkg.go.dev/github.com/cockroachdb/pebble#Open), or
+[`Open`](https://pkg.go.dev/github.com/lance6716/pebble#Open), or
 upgrade the format major version at runtime using
-[`DB.RatchetFormatMajorVersion`](https://pkg.go.dev/github.com/cockroachdb/pebble#DB.RatchetFormatMajorVersion).
+[`DB.RatchetFormatMajorVersion`](https://pkg.go.dev/github.com/lance6716/pebble#DB.RatchetFormatMajorVersion).
 Format major version upgrades are permanent; There is no option to
 return to an earlier format.
 
@@ -198,7 +198,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/cockroachdb/pebble"
+	"github.com/lance6716/pebble"
 )
 
 func main() {

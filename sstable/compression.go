@@ -8,9 +8,9 @@ import (
 	"encoding/binary"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/cache"
 	"github.com/golang/snappy"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/cache"
 )
 
 func decompressedLen(blockType blockType, b []byte) (int, int, error) {

@@ -10,20 +10,21 @@ import (
 	"fmt"
 	"math"
 	"runtime"
+	"slices"
 	"sort"
 	"sync"
 
 	"github.com/cespare/xxhash/v2"
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/bytealloc"
-	"github.com/cockroachdb/pebble/internal/cache"
-	"github.com/cockroachdb/pebble/internal/crc"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/private"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/objstorage"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/bytealloc"
+	"github.com/lance6716/pebble/internal/cache"
+	"github.com/lance6716/pebble/internal/crc"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/private"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/objstorage"
 )
 
 // encodedBHPEstimatedSize estimates the size of the encoded BlockHandleWithProperties.
@@ -115,6 +116,9 @@ type Writer struct {
 	writable objstorage.Writable
 	meta     WriterMetadata
 	err      error
+
+	id *Identity
+
 	// cacheID and fileNum are used to remove blocks written to the sstable from
 	// the cache, providing a defense in depth against bugs which cause cache
 	// collisions.
@@ -1519,18 +1523,11 @@ func (w *Writer) maybeAddBlockPropertiesToBlockHandle(
 	return BlockHandleWithProperties{BlockHandle: bh, Props: w.dataBlockBuf.dataBlockProps}, nil
 }
 
+// TODO(lance6716): change data and check if it always applies.
 func (w *Writer) indexEntrySep(prevKey, key InternalKey, dataBlockBuf *dataBlockBuf) InternalKey {
-	// Make a rough guess that we want key-sized scratch to compute the separator.
-	if cap(dataBlockBuf.sepScratch) < key.Size() {
-		dataBlockBuf.sepScratch = make([]byte, 0, key.Size()*2)
-	}
-
 	var sep InternalKey
-	if key.UserKey == nil && key.Trailer == 0 {
-		sep = prevKey.Successor(w.compare, w.successor, dataBlockBuf.sepScratch[:0])
-	} else {
-		sep = prevKey.Separator(w.compare, w.separator, dataBlockBuf.sepScratch[:0], key)
-	}
+	sep.UserKey = slices.Clone(prevKey.UserKey)
+	sep.Trailer = prevKey.Trailer
 	return sep
 }
 
@@ -1939,6 +1936,8 @@ func (w *Writer) Close() (err error) {
 		n := encodeBlockHandle(w.blockBuf.tmp[:], bh)
 		metaindex.add(InternalKey{UserKey: []byte(w.filter.metaName())}, w.blockBuf.tmp[:n])
 		w.props.FilterPolicyName = w.filter.policyName()
+		// TODO(lance6716): can we find a better way to overwrite?
+		w.props.FilterPolicyName = "bloomfilter"
 		w.props.FilterSize = bh.Length
 	}
 
@@ -2038,6 +2037,12 @@ func (w *Writer) Close() (err error) {
 
 	{
 		userProps := make(map[string]string)
+		userProps["rocksdb.creating.db.identity"] = w.id.DB
+		userProps["rocksdb.creating.host.identity"] = w.id.Host
+		userProps["rocksdb.creating.session.identity"] = w.id.Session
+		userProps["rocksdb.original.file.number"] = string(binary.AppendUvarint(nil, w.id.OriginalFileNumber))
+		userProps["rocksdb.num.filter_entries"] = string(binary.AppendUvarint(nil, w.props.NumEntries))
+		userProps["rocksdb.tail.start.offset"] = string(binary.AppendUvarint(nil, w.props.DataSize))
 		for i := range w.propCollectors {
 			if err := w.propCollectors[i].Finish(userProps); err != nil {
 				return err
@@ -2060,6 +2065,7 @@ func (w *Writer) Close() (err error) {
 			// that the block property collector was used when writing.
 			userProps[w.blockPropCollectors[i].Name()] = prop
 		}
+
 		if len(userProps) > 0 {
 			w.props.UserProperties = userProps
 		}
@@ -2194,6 +2200,17 @@ func (o *PreviousPointKeyOpt) writerApply(w *Writer) {
 	o.w = w
 }
 
+type Identity struct {
+	DB                 string
+	Host               string
+	Session            string
+	OriginalFileNumber uint64
+}
+
+func (i *Identity) writerApply(w *Writer) {
+	w.id = i
+}
+
 // NewWriter returns a new table writer for the file. Closing the writer will
 // close the file.
 func NewWriter(writable objstorage.Writable, o WriterOptions, extraOpts ...WriterOption) *Writer {
@@ -2266,17 +2283,20 @@ func NewWriter(writable objstorage.Writable, o WriterOptions, extraOpts ...Write
 		}
 	}
 
-	w.props.PrefixExtractorName = "nullptr"
+	// TODO(lance6716): check if it's only used in read path
+	w.props.PrefixExtractorName = "FixedSuffixSliceTransform"
+	w.props.PrefixFiltering = true
+	w.props.WholeKeyFiltering = false
 	if o.FilterPolicy != nil {
 		switch o.FilterType {
 		case TableFilter:
 			w.filter = newTableFilterWriter(o.FilterPolicy)
-			if w.split != nil {
-				w.props.PrefixExtractorName = o.Comparer.Name
-				w.props.PrefixFiltering = true
-			} else {
-				w.props.WholeKeyFiltering = true
-			}
+			//if w.split != nil {
+			//	w.props.PrefixExtractorName = o.Comparer.Name
+			//	w.props.PrefixFiltering = true
+			//} else {
+			//	w.props.WholeKeyFiltering = true
+			//}
 		default:
 			panic(fmt.Sprintf("unknown filter type: %v", o.FilterType))
 		}

@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/cockroachdb/datadriven"
-	"github.com/cockroachdb/pebble/internal/randvar"
+	"github.com/lance6716/pebble/internal/randvar"
 	"github.com/stretchr/testify/require"
 )
 

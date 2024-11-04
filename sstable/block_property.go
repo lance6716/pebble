@@ -11,8 +11,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/rangekey"
 )
 
 // Block properties are an optional user-facing feature that can be used to

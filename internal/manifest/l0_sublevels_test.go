@@ -17,9 +17,9 @@ import (
 	"time"
 
 	"github.com/cockroachdb/datadriven"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/testkeys"
-	"github.com/cockroachdb/pebble/record"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/record"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/exp/rand"
 )

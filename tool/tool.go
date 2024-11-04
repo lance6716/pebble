@@ -5,12 +5,12 @@
 package tool
 
 import (
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/bloom"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/objstorage/remote"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/bloom"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/objstorage/remote"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/spf13/cobra"
 )
 

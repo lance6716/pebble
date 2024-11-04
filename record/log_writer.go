@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/crc"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/crc"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

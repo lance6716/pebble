@@ -15,9 +15,9 @@ import (
 
 	"github.com/cockroachdb/datadriven"
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/testkeys"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/require"
 )

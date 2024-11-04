@@ -13,7 +13,7 @@ import (
 	"sort"
 	"unsafe"
 
-	"github.com/cockroachdb/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/base"
 )
 
 // Layout describes the block organization of an sstable.
@@ -34,6 +34,74 @@ type Layout struct {
 	MetaIndex  BlockHandle
 	Footer     BlockHandle
 	Format     TableFormat
+}
+
+type BlockInfo struct {
+	BlockHandle
+	Name        string
+	Compression byte
+	Checksum    uint32
+}
+
+func (b *BlockInfo) readTrailer(r *Reader) {
+	if b.Name == "footer" || b.Name == "leveldb-footer" {
+		return
+	}
+	trailer := make([]byte, blockTrailerLen)
+	_ = r.readable.ReadAt(context.Background(), trailer, int64(b.Offset+b.Length))
+	b.Compression = trailer[0]
+	b.Checksum = binary.LittleEndian.Uint32(trailer[1:])
+}
+
+func (l *Layout) BlockInfos(r *Reader) []*BlockInfo {
+	var ret []*BlockInfo
+
+	for i := range l.Data {
+		ret = append(ret, &BlockInfo{BlockHandle: l.Data[i].BlockHandle, Name: "data"})
+	}
+	for i := range l.Index {
+		ret = append(ret, &BlockInfo{BlockHandle: l.Index[i], Name: "index"})
+	}
+	if l.TopIndex.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.TopIndex, Name: "top-index"})
+	}
+	if l.Filter.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.Filter, Name: "filter"})
+	}
+	if l.RangeDel.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.RangeDel, Name: "range-del"})
+	}
+	if l.RangeKey.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.RangeKey, Name: "range-key"})
+	}
+	for i := range l.ValueBlock {
+		ret = append(ret, &BlockInfo{BlockHandle: l.ValueBlock[i], Name: "value-block"})
+	}
+	if l.ValueIndex.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.ValueIndex, Name: "value-index"})
+	}
+	if l.Properties.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.Properties, Name: "properties"})
+	}
+	if l.MetaIndex.Length != 0 {
+		ret = append(ret, &BlockInfo{BlockHandle: l.MetaIndex, Name: "meta-index"})
+	}
+	if l.Footer.Length != 0 {
+		if l.Footer.Length == levelDBFooterLen {
+			ret = append(ret, &BlockInfo{BlockHandle: l.Footer, Name: "leveldb-footer"})
+		} else {
+			ret = append(ret, &BlockInfo{BlockHandle: l.Footer, Name: "footer"})
+		}
+	}
+
+	sort.Slice(ret, func(i, j int) bool {
+		return ret[i].Offset < ret[j].Offset
+	})
+
+	for _, b := range ret {
+		b.readTrailer(r)
+	}
+	return ret
 }
 
 // Describe returns a description of the layout. If the verbose parameter is

@@ -17,14 +17,14 @@ import (
 	"unsafe"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/batchskl"
-	"github.com/cockroachdb/pebble/internal/humanize"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/private"
-	"github.com/cockroachdb/pebble/internal/rangedel"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/internal/rawalloc"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/batchskl"
+	"github.com/lance6716/pebble/internal/humanize"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/private"
+	"github.com/lance6716/pebble/internal/rangedel"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/internal/rawalloc"
 )
 
 const (

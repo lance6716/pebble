@@ -10,9 +10,9 @@ import (
 	"os"
 	"sync"
 
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/objstorage"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/objstorage"
+	"github.com/lance6716/pebble/vfs"
 )
 
 const fileMaxReadaheadSize = 256 * 1024 /* 256KB */

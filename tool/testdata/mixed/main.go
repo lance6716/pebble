@@ -20,9 +20,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/internal/testkeys"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/internal/testkeys"
+	"github.com/lance6716/pebble/vfs"
 )
 
 const outDir = "./tool/testdata/mixed"

@@ -156,7 +156,7 @@ test.key-count: 1727
 
 # Test for properties in SSTs made by the db itself. Should not contain
 # rocksdb.external_sst_file.* . See
-# https://github.com/cockroachdb/pebble/issues/532
+# https://github.com/lance6716/pebble/issues/532
 sstable properties
 -v
 testdata/find-db/archive/000011.sst

@@ -16,19 +16,19 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/invalidating"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/internal/private"
-	"github.com/cockroachdb/pebble/internal/rangedel"
-	"github.com/cockroachdb/pebble/internal/rangekey"
-	"github.com/cockroachdb/pebble/objstorage"
-	"github.com/cockroachdb/pebble/objstorage/objstorageprovider/objiotracing"
-	"github.com/cockroachdb/pebble/objstorage/remote"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/invalidating"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/internal/private"
+	"github.com/lance6716/pebble/internal/rangedel"
+	"github.com/lance6716/pebble/internal/rangekey"
+	"github.com/lance6716/pebble/objstorage"
+	"github.com/lance6716/pebble/objstorage/objstorageprovider/objiotracing"
+	"github.com/lance6716/pebble/objstorage/remote"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
 	"golang.org/x/exp/constraints"
 )
 
@@ -2176,7 +2176,7 @@ func (d *DB) flush1() (bytesFlushed uint64, err error) {
 				// been set yet. So, we directly use the FileNum. Since these
 				// files were generated as compaction outputs, these must be
 				// physical files on disk. This property might not hold once
-				// https://github.com/cockroachdb/pebble/issues/389 is
+				// https://github.com/lance6716/pebble/issues/389 is
 				// implemented if #389 creates virtual sstables as output files.
 				d.mu.versions.obsoleteTables = append(
 					d.mu.versions.obsoleteTables,
@@ -2745,7 +2745,7 @@ func (d *DB) compact1(c *compaction, errChannel chan error) (err error) {
 				// been set yet. So, we directly use the FileNum. Since these
 				// files were generated as compaction outputs, these must be
 				// physical files on disk. This property might not hold once
-				// https://github.com/cockroachdb/pebble/issues/389 is
+				// https://github.com/lance6716/pebble/issues/389 is
 				// implemented if #389 creates virtual sstables as output files.
 				d.mu.versions.obsoleteTables = append(
 					d.mu.versions.obsoleteTables,

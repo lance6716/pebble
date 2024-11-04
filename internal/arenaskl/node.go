@@ -21,7 +21,7 @@ import (
 	"math"
 	"sync/atomic"
 
-	"github.com/cockroachdb/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/base"
 )
 
 // MaxNodeSize returns the maximum space needed for a node with the specified

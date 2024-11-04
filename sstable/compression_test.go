@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cockroachdb/pebble/internal/cache"
+	"github.com/lance6716/pebble/internal/cache"
 	"github.com/stretchr/testify/require"
 )
 

@@ -213,7 +213,7 @@ lsm
 6:
   000006:[z#14,SET-z#14,SET]
 
-# Regression test for https://github.com/cockroachdb/pebble/issues/2947.
+# Regression test for https://github.com/lance6716/pebble/issues/2947.
 reset
 ----
 

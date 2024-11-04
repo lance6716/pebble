@@ -3,7 +3,7 @@
 // the LICENSE file.
 
 // Package pebble provides an ordered key/value store.
-package pebble // import "github.com/cockroachdb/pebble"
+package pebble // import "github.com/lance6716/pebble"
 
 import (
 	"context"
@@ -16,21 +16,21 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/arenaskl"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/invalidating"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/internal/keyspan"
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/internal/manual"
-	"github.com/cockroachdb/pebble/objstorage"
-	"github.com/cockroachdb/pebble/objstorage/remote"
-	"github.com/cockroachdb/pebble/rangekey"
-	"github.com/cockroachdb/pebble/record"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
-	"github.com/cockroachdb/pebble/vfs/atomicfs"
 	"github.com/cockroachdb/tokenbucket"
+	"github.com/lance6716/pebble/internal/arenaskl"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/invalidating"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/internal/keyspan"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/internal/manual"
+	"github.com/lance6716/pebble/objstorage"
+	"github.com/lance6716/pebble/objstorage/remote"
+	"github.com/lance6716/pebble/rangekey"
+	"github.com/lance6716/pebble/record"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
+	"github.com/lance6716/pebble/vfs/atomicfs"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

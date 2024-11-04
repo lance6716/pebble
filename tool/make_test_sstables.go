@@ -11,10 +11,10 @@ package main
 import (
 	"log"
 
-	"github.com/cockroachdb/pebble/internal/private"
-	"github.com/cockroachdb/pebble/objstorage/objstorageprovider"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/internal/private"
+	"github.com/lance6716/pebble/objstorage/objstorageprovider"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
 )
 
 func makeOutOfOrder() {

@@ -10,12 +10,12 @@ import (
 	"sort"
 	"time"
 
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/humanize"
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/record"
-	"github.com/cockroachdb/pebble/sstable"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/humanize"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/record"
+	"github.com/lance6716/pebble/sstable"
 	"github.com/spf13/cobra"
 )
 

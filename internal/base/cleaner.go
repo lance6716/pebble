@@ -4,7 +4,7 @@
 
 package base
 
-import "github.com/cockroachdb/pebble/vfs"
+import "github.com/lance6716/pebble/vfs"
 
 // Cleaner cleans obsolete files.
 type Cleaner interface {

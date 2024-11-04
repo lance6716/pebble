@@ -17,7 +17,7 @@
 
 package batchskl
 
-import "github.com/cockroachdb/pebble/internal/base"
+import "github.com/lance6716/pebble/internal/base"
 
 type splice struct {
 	prev uint32

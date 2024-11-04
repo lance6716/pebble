@@ -9,13 +9,13 @@ import (
 	"math"
 	"time"
 
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/cache"
-	"github.com/cockroachdb/pebble/internal/humanize"
-	"github.com/cockroachdb/pebble/objstorage/objstorageprovider/sharedcache"
-	"github.com/cockroachdb/pebble/record"
-	"github.com/cockroachdb/pebble/sstable"
 	"github.com/cockroachdb/redact"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/cache"
+	"github.com/lance6716/pebble/internal/humanize"
+	"github.com/lance6716/pebble/objstorage/objstorageprovider/sharedcache"
+	"github.com/lance6716/pebble/record"
+	"github.com/lance6716/pebble/sstable"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

@@ -21,7 +21,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/cockroachdb/pebble/internal/constants"
+	"github.com/lance6716/pebble/internal/constants"
 	"github.com/stretchr/testify/require"
 )
 

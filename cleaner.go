@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors/oserror"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/invariants"
-	"github.com/cockroachdb/pebble/objstorage"
 	"github.com/cockroachdb/tokenbucket"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/invariants"
+	"github.com/lance6716/pebble/objstorage"
 )
 
 // Cleaner exports the base.Cleaner type.

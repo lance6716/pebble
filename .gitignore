@@ -7,3 +7,5 @@ mutex.prof
 coverprofile.out
 # Testing artifacts
 meta.*.test
+# IDE
+.idea

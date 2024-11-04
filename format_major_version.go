@@ -9,11 +9,11 @@ import (
 	"strconv"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/manifest"
-	"github.com/cockroachdb/pebble/sstable"
-	"github.com/cockroachdb/pebble/vfs"
-	"github.com/cockroachdb/pebble/vfs/atomicfs"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/manifest"
+	"github.com/lance6716/pebble/sstable"
+	"github.com/lance6716/pebble/vfs"
+	"github.com/lance6716/pebble/vfs/atomicfs"
 )
 
 // FormatMajorVersion is a constant controlling the format of persisted

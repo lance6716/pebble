@@ -9,7 +9,7 @@ package vfstest
 import (
 	"os"
 
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble/vfs"
 )
 
 // DiscardFile implements vfs.File but discards all written data and reads

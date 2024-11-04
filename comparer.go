@@ -4,7 +4,7 @@
 
 package pebble
 
-import "github.com/cockroachdb/pebble/internal/base"
+import "github.com/lance6716/pebble/internal/base"
 
 // Compare exports the base.Compare type.
 type Compare = base.Compare

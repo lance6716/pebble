@@ -4,7 +4,7 @@
 
 package keyspan
 
-import "github.com/cockroachdb/pebble/internal/base"
+import "github.com/lance6716/pebble/internal/base"
 
 // Truncate creates a new iterator where every span in the supplied iterator is
 // truncated to be contained within the range [lower, upper). If start and end

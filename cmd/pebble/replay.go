@@ -20,12 +20,12 @@ import (
 	"unicode"
 
 	"github.com/cockroachdb/errors"
-	"github.com/cockroachdb/pebble"
-	"github.com/cockroachdb/pebble/bloom"
-	"github.com/cockroachdb/pebble/internal/base"
-	"github.com/cockroachdb/pebble/internal/cache"
-	"github.com/cockroachdb/pebble/replay"
-	"github.com/cockroachdb/pebble/vfs"
+	"github.com/lance6716/pebble"
+	"github.com/lance6716/pebble/bloom"
+	"github.com/lance6716/pebble/internal/base"
+	"github.com/lance6716/pebble/internal/cache"
+	"github.com/lance6716/pebble/replay"
+	"github.com/lance6716/pebble/vfs"
 	"github.com/spf13/cobra"
 )
 
