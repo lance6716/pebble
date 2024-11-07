@@ -2200,6 +2200,7 @@ func (o *PreviousPointKeyOpt) writerApply(w *Writer) {
 	o.w = w
 }
 
+// TODO(lance6716): no need to use same identity?
 type Identity struct {
 	DB                 string
 	Host               string

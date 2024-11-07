@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"maps"
 	"math"
 	"reflect"
 	"sort"
@@ -199,6 +200,13 @@ type Properties struct {
 	// (reflect.StructField.Offset). Only set if the properties have been loaded
 	// from a file. Only exported for testing purposes.
 	Loaded map[uintptr]struct{}
+}
+
+func (p *Properties) Clone() *Properties {
+	clone := *p
+	clone.UserProperties = maps.Clone(p.UserProperties)
+	clone.Loaded = maps.Clone(p.Loaded)
+	return &clone
 }
 
 // NumPointDeletions returns the number of point deletions in this table.
