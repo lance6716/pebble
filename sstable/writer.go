@@ -117,8 +117,6 @@ type Writer struct {
 	meta     WriterMetadata
 	err      error
 
-	id *Identity
-
 	// cacheID and fileNum are used to remove blocks written to the sstable from
 	// the cache, providing a defense in depth against bugs which cause cache
 	// collisions.
@@ -2037,11 +2035,17 @@ func (w *Writer) Close() (err error) {
 
 	{
 		userProps := make(map[string]string)
-		userProps["rocksdb.creating.db.identity"] = w.id.DB
-		userProps["rocksdb.creating.host.identity"] = w.id.Host
-		userProps["rocksdb.creating.session.identity"] = w.id.Session
-		userProps["rocksdb.original.file.number"] = string(binary.AppendUvarint(nil, w.id.OriginalFileNumber))
+		// Called by RocksDB before Finish to populate
+		// TableProperties::num_filter_entries, so should represent the
+		// number of unique keys (and/or prefixes) added, but does not have
+		// to be exact. `return 0;` may be used to conspicuously indicate "unknown".
+		//
+		// ref https://github.com/tikv/rocksdb/blob/e25544481ba8fab12a4bc426181a4a890c95cecb/table/block_based/filter_policy_internal.h#L34-L38
 		userProps["rocksdb.num.filter_entries"] = string(binary.AppendUvarint(nil, w.props.NumEntries))
+		// Offset where the "tail" part of SST file starts
+		// "Tail" refers to all blocks after data blocks till the end of the SST file
+		//
+		// ref https://github.com/tikv/rocksdb/blob/e25544481ba8fab12a4bc426181a4a890c95cecb/include/rocksdb/table_properties.h#L262-L264
 		userProps["rocksdb.tail.start.offset"] = string(binary.AppendUvarint(nil, w.props.DataSize))
 		for i := range w.propCollectors {
 			if err := w.propCollectors[i].Finish(userProps); err != nil {
@@ -2198,18 +2202,6 @@ func (o PreviousPointKeyOpt) UnsafeKey() base.InternalKey {
 
 func (o *PreviousPointKeyOpt) writerApply(w *Writer) {
 	o.w = w
-}
-
-// TODO(lance6716): no need to use same identity?
-type Identity struct {
-	DB                 string
-	Host               string
-	Session            string
-	OriginalFileNumber uint64
-}
-
-func (i *Identity) writerApply(w *Writer) {
-	w.id = i
 }
 
 // NewWriter returns a new table writer for the file. Closing the writer will

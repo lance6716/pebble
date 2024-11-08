@@ -4,7 +4,11 @@
 
 package sstable
 
-import "github.com/klauspost/compress/zstd"
+import (
+	"sync"
+
+	"github.com/klauspost/compress/zstd"
+)
 
 // decodeZstd decompresses b with the Zstandard algorithm.
 // It reuses the preallocated capacity of decodedBuf if it is sufficient.
@@ -21,7 +25,14 @@ func decodeZstd(decodedBuf, b []byte) ([]byte, error) {
 // the length of `b` before calling encodeZstd. It returns the encoded byte
 // slice, including the `compressedBuf[:varIntLen]` prefix.
 func encodeZstd(compressedBuf []byte, varIntLen int, b []byte) []byte {
-	encoder, _ := zstd.NewWriter(nil)
-	defer encoder.Close()
+	encoder := zstdPool.Get().(*zstd.Encoder)
+	defer zstdPool.Put(encoder)
 	return encoder.EncodeAll(b, compressedBuf[:varIntLen])
+}
+
+var zstdPool = sync.Pool{
+	New: func() interface{} {
+		encoder, _ := zstd.NewWriter(nil)
+		return encoder
+	},
 }
