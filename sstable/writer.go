@@ -2276,20 +2276,17 @@ func NewWriter(writable objstorage.Writable, o WriterOptions, extraOpts ...Write
 		}
 	}
 
-	// TODO(lance6716): check if it's only used in read path
-	w.props.PrefixExtractorName = "FixedSuffixSliceTransform"
-	w.props.PrefixFiltering = true
-	w.props.WholeKeyFiltering = false
+	w.props.PrefixExtractorName = "nullptr"
 	if o.FilterPolicy != nil {
 		switch o.FilterType {
 		case TableFilter:
 			w.filter = newTableFilterWriter(o.FilterPolicy)
-			//if w.split != nil {
-			//	w.props.PrefixExtractorName = o.Comparer.Name
-			//	w.props.PrefixFiltering = true
-			//} else {
-			//	w.props.WholeKeyFiltering = true
-			//}
+			if w.split != nil {
+				w.props.PrefixExtractorName = o.Comparer.SplitterName
+				w.props.PrefixFiltering = true
+			} else {
+				w.props.WholeKeyFiltering = true
+			}
 		default:
 			panic(fmt.Sprintf("unknown filter type: %v", o.FilterType))
 		}

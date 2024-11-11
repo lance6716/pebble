@@ -127,6 +127,7 @@ type Comparer struct {
 	FormatValue        FormatValue
 	Separator          Separator
 	Split              Split
+	SplitterName       string
 	Successor          Successor
 	ImmediateSuccessor ImmediateSuccessor
 
